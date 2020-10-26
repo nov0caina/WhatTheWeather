@@ -6,6 +6,7 @@ export default function UnitsPicker({unitsSystem, setUnitsSystem}) {
   return (
     <View style={styles.unitsSystem}>
       <Picker 
+      style={styles.simpleText}
       selectedValue={unitsSystem} 
       onValueChange={(item) => setUnitsSystem(item)} 
       mode = "dropdown" 
@@ -32,6 +33,9 @@ const styles = StyleSheet.create({
     
     left: 20,
     height: 50,
-    width: 100
+    width: 100,
+  },
+  simpleText:{
+    color: '#ffff'
   }
 })

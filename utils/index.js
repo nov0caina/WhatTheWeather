@@ -1,8 +1,9 @@
 export const colors = {
   primaryColor: '#ff304f',
-  secondaryColor: '#002651',
-  feelsLikeColor: '#ffa835',
-  humidityColor: '#22a4f1',
-  windColor: '#80cbc4',
+  secondaryColor: '#ffff',
+  feelsLikeColor: '#89D758',
+  humidityColor: '#5EB9E6',
+  windColor: '#AADCD7',
+  pressureColor: '#ffa835',
   borderColor: '#dbdbdb'
 }

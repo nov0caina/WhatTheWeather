@@ -7,7 +7,7 @@ export default function ReloadIcon({ load }) {
   const reloadIconName = Platform.OS == 'ios' ? 'ios-refresh' : 'md-refresh'
   return (
     <View style={styles.reloadIcon}>
-      <Ionicons onPress={load} name={reloadIconName} size={24} color="black" />
+      <Ionicons onPress={load} name={reloadIconName} size={24} color='#BF0000' />
     </View>
   )
 }
@@ -16,6 +16,6 @@ const styles = StyleSheet.create({
   reloadIcon: {
     position: 'absolute',
     top: 40,
-    right: 20
+    right: 20,
   }
 })

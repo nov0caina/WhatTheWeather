@@ -12,9 +12,10 @@ export default function WeatherInfo({ currentWeather }) {
   } = currentWeather
   const { icon, main, description } = details
   const iconUrl = `https://openweathermap.org/img/wn/${icon}@4x.png`
+
   return (
     <View style={styles.WeatherInfo}>
-      <Text>{name}</Text>
+      <Text style={styles.simpleText}>{name}</Text>
       <Image style={styles.weatherIcon} source={{ uri: iconUrl }} />
       <Text style={styles.textPrimary}>{temp}º</Text>
       <Text style={styles.weatherDescription}>{description}</Text>
@@ -28,7 +29,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   weatherDescription: {
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
+    color: '#ffff'
   },
   weatherIcon: {
     width: 100,
@@ -43,5 +45,11 @@ const styles = StyleSheet.create({
     color: secondaryColor,
     fontWeight: '500',
     marginTop: 10
+  },
+  imageStyle: {
+    flex: 1,
+  },
+  simpleText:{
+    color: '#ffff'
   }
 })

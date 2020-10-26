@@ -6,9 +6,26 @@ import WeatherInfo from './components/WeatherInfo'
 import UnitsPicker from './components/UnitsPicker'
 import ReloadIcon from './components/ReloadIcon'
 import WeatherDetails from './components/WeatherDetails'
+import BackgroundImage from './components/BackgroundImage';
 import { colors } from './utils/index'
+import { weather_API_KEY } from 'react-native-dotenv'
 
-const weather_API_KEY = '17d37dcee33e572979460360bde38a67';
+const Thunderstorm = "./assets/backgrounds/Thunderstorm.png"
+const Drizzle = "./assets/backgrounds/Drizzle.png"
+const Snow = "./assets/backgrounds/Snow.png"
+const Rain = "./assets/backgrounds/Rain.png"
+const Mist = "./assets/backgrounds/Mist.png"
+const Smoke = "./assets/nov0caina.png"
+const Haze = "./assets/nov0caina.png"
+const Dust = "./assets/nov0caina.png"
+const Fog = "./assets/nov0caina.png"
+const Sand = "./assets/nov0caina.png"
+const Ash = "./assets/nov0caina.png"
+const Squall = "./assets/nov0caina.png"
+const Tornado = "./assets/nov0caina.png"
+const Clear = "./assets/backgrounds/Clear.png"
+const Clouds = "./assets/nov0caina.png"
+
 const base_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?'
 
 export default function App() {
@@ -32,13 +49,9 @@ export default function App() {
         return
       }
       const location = await Location.getCurrentPositionAsync();
-
       const { latitude, longitude } = await location.coords;
-
       const weatherUrl = `${base_WEATHER_URL}lat=${latitude}&lon=${longitude}&units=${unitsSystem}&appid=${weather_API_KEY}`;
-
       const response = await fetch(weatherUrl);
-
       const result = await response.json();
 
       if (response.ok) {
@@ -48,7 +61,6 @@ export default function App() {
         setErrorMessage(result.message)
       }
 
-      /* alert(`Latitude: ${latitude}, \nLongitude: ${longitude}`) */
     }
     catch (error) {
       setErrorMessage(error.message)
@@ -56,15 +68,73 @@ export default function App() {
   }
 
   if (currentWeather) {
+
+    const {
+      weather: [details]
+    } = currentWeather
+    const { main } = details
+
+    let bg
+
+    switch (main) {
+      case 'Thunderstorm':
+        bg = require(Thunderstorm);
+        break;
+      case 'Drizzle':
+        bg = require(Drizzle);
+        break;
+      case 'Rain':
+        bg = require(Rain);
+        break;
+      case 'Snow':
+        bg = require(Snow);
+        break;
+      case 'Mist':
+        bg = require(Mist);
+        break;
+      case 'Smoke':
+        bg = require(Smoke);
+        break;
+      case 'Haze':
+        bg = require(Haze);
+        break;
+      case 'Dust':
+        bg = require(Dust);
+        break;
+      case 'Fog':
+        bg = require(Fog);
+        break;
+      case 'Sand':
+        bg = require(Sand);
+        break;
+      case 'Ash':
+        bg = require(Ash);
+        break;
+      case 'Squall':
+        bg = require(Squall);
+        break;
+      case 'Tornado':
+        bg = require(Tornado);
+        break;
+      case 'Clear':
+        bg = require(Clear);
+        break;
+      case 'Clouds':
+        bg = require(Clouds);
+        break;
+    }
+
     return (
       <View style={styles.container}>
-        <StatusBar style="auto" />
-        <View style={styles.main}>
-          <UnitsPicker unitsSystem={unitsSystem} setUnitsSystem={setUnitsSystem} />
-          <ReloadIcon load={load} />
-          <WeatherInfo currentWeather={currentWeather} º />
-        </View>
-        <WeatherDetails currentWeather={currentWeather} unitsSystem={unitsSystem} />
+        <BackgroundImage imageSource={bg} opacity={0.8}>
+          <StatusBar style="auto" />
+          <View style={styles.main}>
+            <UnitsPicker unitsSystem={unitsSystem} setUnitsSystem={setUnitsSystem} />
+            <ReloadIcon load={load} />
+            <WeatherInfo currentWeather={currentWeather} º />
+          </View>
+          <WeatherDetails currentWeather={currentWeather} unitsSystem={unitsSystem} />
+        </BackgroundImage>
       </View>
     )
   } else if (errorMessage) {
