@@ -24,7 +24,7 @@ const Ash = "./assets/nov0caina.png"
 const Squall = "./assets/nov0caina.png"
 const Tornado = "./assets/nov0caina.png"
 const Clear = "./assets/backgrounds/Clear.png"
-const Clouds = "./assets/nov0caina.png"
+const Clouds = "./assets/backgrounds/Clouds.png"
 
 const base_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?'
 
